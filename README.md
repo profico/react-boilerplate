@@ -1,4 +1,22 @@
+## Project structure
+
+---
+
+v1
+
+```
+src
+└── components (store all reusable components here)
+└── containers (effectively a collection of sub-routes)
+└──── e.g. AdminContainer (manages all routes matching ^/admin.*)
+└── routers (collection of top-level routers which pass info down to their respective containers)
+└── utils (place to store Context, HOCs, hooks that are shared across the app)
+└── views (place to store views; each view should match 1 route)
+```
+
 ## Available Scripts
+
+---
 
 ### `yarn start`
 
