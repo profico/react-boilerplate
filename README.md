@@ -1,5 +1,9 @@
 ## Project structure
 
+This project uses import alias which means every import is relative to the root folder.
+E.g. to import main `App` component the code would be `import App from 'components/App';`.
+Very useful down the road.
+
 ---
 
 v1
