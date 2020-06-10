@@ -137,4 +137,5 @@ Additional rules that can be applied to have an universal style of coding across
 - There should be an empty line before `return` statements - makes it more visible
 - Use of hooks is strongly encouraged
 - Styles should be kept outside of the component, but inside the parent folder.
+- Prefer functional over class components
 - _Add your recommendation here_...
