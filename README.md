@@ -6,17 +6,37 @@ Very useful down the road.
 
 ---
 
-v1
-
 ```
 src
 └── components (store all reusable components here)
+└── config (store all "hardcoded" stuff here)
 └── containers (effectively a collection of sub-routes)
 └──── e.g. AdminContainer (manages all routes matching ^/admin.*)
+└── i18n (optional)
+└──── en_US
+└──── hr_HR
+└──── index.ts
 └── routers (collection of top-level routers which pass info down to their respective containers)
+└── graphql (optional)
+└──── queries
+└──── mutations
+└──── models
+└── redux (optional)
+└──── actions
+└──── reducers
+└──── types
+└──── store.ts
+└── services (place to store services which communicate to the backend)
+└── styles (place to store basic styles settings such as variables, mixins etc.)
 └── utils (place to store Context, HOCs, hooks that are shared across the app)
 └── views (place to store views; each view should match 1 route)
 ```
+
+> Some of the listed folders are not created in the repository to keep the repository size smaller and easier to customize.
+
+## Style Guide
+
+> https://github.com/profico/react-boilerplate-typescript/blob/master/style-guide.md
 
 ## Available Scripts
 
