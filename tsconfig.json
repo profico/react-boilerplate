@@ -16,7 +16,8 @@
     "experimentalDecorators": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["react", "jest", "node"],
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noImplicitAny": false
   },
   "include": ["src"],
   "exclude": ["node_modules", "build"]
