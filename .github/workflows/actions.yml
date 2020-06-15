@@ -24,4 +24,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run lint, test and build commands
-      run: yarn lint && yarn test && yarn build
+      run: yarn && yarn lint && yarn test && yarn build
