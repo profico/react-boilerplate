@@ -2,6 +2,9 @@
   "name": "react-boilerplate-typescript",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Filip Polić"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.9.0",
     "enzyme": "^3.11.0",
@@ -17,7 +20,7 @@
     "test:cov": "yarn test -- --coverage",
     "test:ci": "CI=true yarn test",
     "lint:base": "eslint --ext .ts,.tsx src/",
-    "lint": "yarn lint:base --fix",
+    "lint": "yarn lint:base --fix --cache",
     "upgrade": "yarn upgrade"
   },
   "eslintConfig": {
