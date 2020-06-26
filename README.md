@@ -89,6 +89,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     }
     ```
 
+- [Material-UI](https://github.com/mui-org/material-ui) for UI components
 - [moment](https://github.com/moment/moment) for handling dates
 - [notistack](https://github.com/iamhosseindhv/notistack) for handling snackbar messages ([Material-UI](https://github.com/mui-org/material-ui) is a requirement)
 - [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) for navigation
@@ -96,6 +97,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - [redux](https://github.com/reduxjs/redux) + [reselect](https://github.com/reduxjs/reselect)
   - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) & [redux-logger](https://github.com/LogRocket/redux-logger) for easier development
 - [react-apollo](https://github.com/apollographql/react-apollo) for GraphQL integration
-- [styled-components](https://github.com/styled-components/styled-components) for styled components :P
+- [styled-components](https://github.com/styled-components/styled-components) for styled components
 - [aphrodite](https://github.com/Khan/aphrodite) for CSS-in-JS solution
 - [awesome-react](https://github.com/enaqx/awesome-react) for a list of packages/articles about React ecosystem
