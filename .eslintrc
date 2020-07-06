@@ -14,7 +14,7 @@
     "plugin:import/warnings",
     "plugin:import/typescript"
   ],
-  "plugins": ["react-hooks"],
+  "plugins": ["react-hooks", "prettier"],
   "settings": {
     "react": {
       "version": "detect",
@@ -25,7 +25,6 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
         "moduleDirectory": ["node_modules", "src/"]
       }
-      // "babel-module": {}
     }
   },
   "parserOptions": {
