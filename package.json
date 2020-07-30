@@ -15,8 +15,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:local": "REACT_APP_ENVIRONMENT=local yarn start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "REACT_APP_ENVIRONMENT=test react-scripts test",
     "test:cov": "yarn test -- --coverage",
     "test:ci": "CI=true yarn test",
     "lint:base": "eslint --ext .ts,.tsx src/",

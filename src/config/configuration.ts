@@ -3,21 +3,33 @@ import { Environment } from './environment';
 class Configuration {
   public readonly environment: Environment;
 
-  public readonly serverUrl: string;
+  public readonly settings: Record<string, unknown>;
 
   /**
    * Initializes new instance of configuration objects
    * and sets its properties with priority in order from environment variables,
-   * appsettings.{environment}.json file or appsettings.json file
+   * settings.{environment}.json file or settings.json file
    */
-  constructor(appSettings: any, appSettingsEnvironment: any, environment: Environment) {
+  constructor(
+    appSettings: Record<string, unknown>,
+    appSettingsEnvironment: Record<string, unknown>,
+    environment: Environment
+  ) {
     this.environment = environment;
+    this.settings = {
+      ...appSettings,
+      ...appSettingsEnvironment,
+    };
 
-    this.serverUrl =
-      process.env.REACT_APP_SERVER_URL ??
-      appSettingsEnvironment.serverUrl ??
-      appSettings.serverUrl ??
-      Configuration.throwErrorExpression('Empty serverUrl');
+    // if (Object.keys(this.settings).length === 0) {
+    //   Configuration.throwErrorExpression('Missing configuration.');
+    // }
+
+    Object.keys(this.settings).forEach((key) => {
+      Object.defineProperty(this, key, {
+        value: appSettingsEnvironment[key] ?? appSettings[key],
+      });
+    });
   }
 
   /**
@@ -26,6 +38,14 @@ class Configuration {
    */
   private static throwErrorExpression(message: string) {
     throw new Error(message);
+  }
+
+  public getProperty(property: string): unknown {
+    if (!Object.prototype.hasOwnProperty.call(this.settings, property)) {
+      Configuration.throwErrorExpression('Missing key.');
+    }
+
+    return this.settings[property];
   }
 }
 export { Configuration };

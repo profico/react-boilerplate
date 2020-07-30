@@ -1,7 +1,8 @@
 enum Environment {
-  Local = 'local',
-  Development = 'development',
-  Production = 'production',
+  LOCAL = 'local',
+  DEVELOPMENT = 'development',
+  PRODUCTION = 'production',
+  TEST = 'test',
 }
 
 export { Environment };
