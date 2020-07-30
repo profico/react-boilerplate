@@ -1,3 +1,6 @@
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Environment } from './environment';
 import { Configuration } from './configuration';
 import appSettings from './appsettings/appsettings.json';

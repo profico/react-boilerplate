@@ -2,6 +2,7 @@ import { Environment } from './environment';
 
 class Configuration {
   public readonly environment: Environment;
+
   public readonly serverUrl: string;
 
   /**
@@ -16,14 +17,14 @@ class Configuration {
       process.env.REACT_APP_SERVER_URL ??
       appSettingsEnvironment.serverUrl ??
       appSettings.serverUrl ??
-      this.throwErrorExpression('Empty serverUrl');
+      Configuration.throwErrorExpression('Empty serverUrl');
   }
 
   /**
    * throw new Error is not expression and cannot be used in combination with ?? operator
    * @param message exception message
    */
-  private throwErrorExpression(message: string) {
+  private static throwErrorExpression(message: string) {
     throw new Error(message);
   }
 }
