@@ -1,2 +1,5 @@
 src/serviceWorker.ts
 src/*.d.ts
+node_modules
+build
+dist
