@@ -21,11 +21,7 @@ class Configuration {
       ...appSettingsEnvironment,
     };
 
-    // if (Object.keys(this.settings).length === 0) {
-    //   Configuration.throwErrorExpression('Missing configuration.');
-    // }
-
-    Object.keys(this.settings).forEach((key) => {
+    Object.keys(this.settings).forEach(key => {
       Object.defineProperty(this, key, {
         value: appSettingsEnvironment[key] ?? appSettings[key],
       });
@@ -40,12 +36,12 @@ class Configuration {
     throw new Error(message);
   }
 
-  public getProperty(property: string): unknown {
+  public getProperty<T = unknown, P extends string = string>(property: P): T {
     if (!Object.prototype.hasOwnProperty.call(this.settings, property)) {
       Configuration.throwErrorExpression('Missing key.');
     }
 
-    return this.settings[property];
+    return this.settings[property] as T;
   }
 }
 export { Configuration };
