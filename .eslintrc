@@ -81,6 +81,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "import/no-dynamic-require": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "global-require": "off"
+    "global-require": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.tsx", "src/setupTests.ts"] }]
   }
 }
