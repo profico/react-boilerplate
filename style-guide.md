@@ -269,4 +269,5 @@ export default useSomething;
 - Use of hooks is strongly encouraged
 - Styles should be kept outside of the component, but inside the current folder.
 - Prefer functional over class components
+- Avoid one-line returns
 - _Add your recommendation here_...
