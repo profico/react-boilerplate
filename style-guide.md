@@ -1,12 +1,10 @@
 # Style Guide
 
----
-
-As a "base" style guide, we'll be using the Airbnb's style guide([website](https://airbnb.io/javascript/react) or [GitHub](https://github.com/airbnb/javascript)). Since we're applying different eslint configs that are combined with Airbnb's [config](https://yarnpkg.com/package/eslint-config-airbnb), large number of these rules are already enforced.
+As a "base" style guide, we'll be using the Airbnb's style guide ([website](https://airbnb.io/javascript/react) or [GitHub](https://github.com/airbnb/javascript)). Since we're applying different eslint configs that are combined with Airbnb's [config](https://yarnpkg.com/package/eslint-config-airbnb), large number of these rules are already enforced.
 
 Additional rules that can be applied to have an universal style of coding across apps:
 
----
+<br />
 
 ## Import statements
 
@@ -72,7 +70,7 @@ Additional rules that can be applied to have an universal style of coding across
   import styles from './help.module.scss';
   ```
 
----
+<br />
 
 ## Project structure
 
@@ -128,14 +126,147 @@ Additional rules that can be applied to have an universal style of coding across
   - Components inside `partials` directory cannot have their own `"partials"` directory!
     > Example: https://github.com/profico/react-boilerplate-typescript/tree/master/src/views/Home
 
+<br />
+
+## Component structure
+
 ---
 
-## Misc
+### _Functional component (arrow function)_
+
+```typescript
+// some/path/MyComponent/MyComponent.tsx
+
+import React from 'react';
+
+interface MyComponentProps {}
+// or
+type MyComponentProps = {};
+
+const MyComponent: React.FC<MyComponentProps> = props => {};
+
+export default MyComponent;
+```
+
+### _Functional component (regular function)_
+
+```typescript
+// some/path/MyComponent/MyComponent.tsx
+
+import React from 'react';
+
+interface MyComponentProps {}
+// or
+type MyComponentProps = {};
+
+function MyComponent(props: MyComponentProps) {}
+
+export default MyComponent;
+```
+
+### _Functional component with generic props_
+
+```typescript
+// some/path/MyComponent/MyComponent.tsx
+
+import React from 'react';
+
+interface MyComponentProps<T> extends T {}
+// or
+type MyComponentProps<T> = T & {};
+
+function MyComponent<T>(props: MyComponentProps<T>) {}
+
+export default MyComponent;
+```
+
+### _Regular Hook (arrow function)_
+
+```typescript
+// some/path/useSomething/useSomething.ts
+
+import React from 'react';
+
+type UseSomethingHook = () => void;
+
+const useSomething: UseSomethingHook = () => {};
+
+export default useSomething;
+```
+
+### _Regular Hook (regular function)_
+
+```typescript
+// some/path/useSomething/useSomething.ts
+
+import React from 'react';
+
+function useSomething(): void;
+
+function useSomething() {}
+
+export default useSomething;
+```
+
+### _Regular Hook (with configuration and return type)_
+
+```typescript
+// some/path/useSomething/useSomething.ts
+
+import React from 'react';
+
+interface UseSomethingConfig {}
+interface UseSomethingPayload {}
+
+type UseSomethingHook = (config: UseSomethingConfig) => UseSomethingPayload;
+
+const useSomething: UseSomethingHook = () => {};
+
+export default useSomething;
+```
+
+### _Regular Hook (with generic configuration)_
+
+```typescript
+// some/path/useSomething/useSomething.ts
+
+import React from 'react';
+
+interface UseSomethingConfig<C> extends C {}
+interface UseSomethingPayload {}
+
+function useSomething<C>(config: UseSomethingConfig<C>): UseSomethingPayload;
+
+function useSomething<C>(config: UseSomethingConfig<C>): UseSomethingPayload {}
+
+export default useSomething;
+```
+
+### _Regular Hook (with generic configuration and payload)_
+
+```typescript
+// some/path/useSomething/useSomething.ts
+
+import React from 'react';
+
+interface UseSomethingConfig<C> extends C {}
+interface UseSomethingPayload<P> extends P {}
+
+function useSomething<C, P>(config: UseSomethingConfig<C>): UseSomethingPayload<P>;
+
+function useSomething<C, P>(config: UseSomethingConfig<C>): UseSomethingPayload<P> {}
+
+export default useSomething;
+```
+
+<br />
+
+## Other
 
 ---
 
 - There should be an empty line before `return` statements - makes it more visible
 - Use of hooks is strongly encouraged
-- Styles should be kept outside of the component, but inside the parent folder.
+- Styles should be kept outside of the component, but inside the current folder.
 - Prefer functional over class components
 - _Add your recommendation here_...
