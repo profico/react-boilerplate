@@ -10,13 +10,11 @@ Very useful down the road.
 src
 └── components (store all reusable components here)
 └── config (store all "hardcoded" stuff here)
-└── containers (effectively a collection of sub-routes)
-└──── e.g. AdminContainer (manages all routes matching ^/admin.*)
 └── i18n (optional)
 └──── en_US
 └──── hr_HR
 └──── index.ts
-└── routers (collection of top-level routers which pass info down to their respective containers)
+└── routers (collection of routers - usually you only need 1 router)
 └── graphql (optional)
 └──── queries
 └──── mutations
@@ -26,9 +24,9 @@ src
 └──── reducers
 └──── types
 └──── store.ts
-└── services (place to store services which communicate to the backend)
+└── services (place to store services which communicate with the backend)
 └── styles (place to store basic styles settings such as variables, mixins etc.)
-└── utils (place to store Context, HOCs, hooks that are shared across the app)
+└── utils (place to store HOCs, hooks that are shared across the app)
 └── views (place to store views; each view should match 1 route)
 ```
 
@@ -36,7 +34,7 @@ src
 
 ## Style Guide
 
-> https://github.com/profico/react-boilerplate-typescript/blob/master/style-guide.md
+> https://github.com/profico/meta/blob/master/Technologies/React/style-guide.md
 
 ## Available Scripts
 
