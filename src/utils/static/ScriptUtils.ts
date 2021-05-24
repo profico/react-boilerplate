@@ -1,4 +1,4 @@
-class Script {
+class ScriptUtils {
   static loadAsync = (src: string, callback?: () => void) => {
     const script = document.createElement('script');
     script.src = src;
@@ -28,4 +28,4 @@ class Script {
   static exists = (src: string) => Boolean(document.querySelector(`script[src="${src}"]`));
 }
 
-export default Script;
+export default ScriptUtils;
