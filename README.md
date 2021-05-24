@@ -4,17 +4,14 @@ This project uses import alias which means every import is relative to the root 
 E.g. to import main `App` component the code would be `import App from 'components/App';`.
 Very useful down the road.
 
----
+> This boilerplate was set up according to the guidelines in https://github.com/profico/react-boilerplate/blob/master/style-guide.md. The structure below extends the base project structure defined in the style guide.
 
 ```
 src
-└── components (store all reusable components here)
-└── config (store all "hardcoded" stuff here)
 └── i18n (optional)
 └──── en_US
 └──── hr_HR
 └──── index.ts
-└── routers (collection of routers - usually you only need 1 router)
 └── graphql (optional)
 └──── queries
 └──── mutations
@@ -26,19 +23,12 @@ src
 └──── store.ts
 └── services (place to store services which communicate with the backend)
 └── styles (place to store basic styles settings such as variables, mixins etc.)
-└── utils (place to store HOCs, hooks that are shared across the app)
-└── views (place to store views; each view should match 1 route)
 ```
 
 > Some of the listed folders are not created in the repository to keep the repository size smaller and easier to customize.
 
-## Style Guide
-
-> https://github.com/profico/meta/blob/master/Technologies/React/style-guide.md
-
 ## Available Scripts
 
----
 
 ### `yarn start`
 
