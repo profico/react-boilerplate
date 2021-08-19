@@ -12,13 +12,8 @@ const { dependencies, devDependencies } = require(path.resolve(__dirname, '../pa
 const listOfDeps = Object.keys(dependencies).join(' ');
 const listOfDevDeps = Object.keys(devDependencies).join(' ');
 
-const removeAllDeps = () => {
-  childProcess.execSync(`yarn remove ${listOfDeps} ${listOfDevDeps}`);
-};
-
 const addAllDeps = () => {
   childProcess.execSync(`yarn add ${listOfDeps} && yarn add --dev ${listOfDevDeps}`);
 };
 
-removeAllDeps();
 addAllDeps();
