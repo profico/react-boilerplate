@@ -13,9 +13,9 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "start": "react-scripts start",
+    "start": "REACT_APP_ENVIRONMENT=development react-scripts start",
     "start:local": "REACT_APP_ENVIRONMENT=local yarn start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_ENVIRONMENT=production react-scripts build",
     "test": "REACT_APP_ENVIRONMENT=test react-scripts test",
     "test:cov": "yarn test -- --coverage",
     "test:ci": "CI=true yarn test",
