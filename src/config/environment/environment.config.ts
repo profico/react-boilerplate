@@ -1,16 +1,33 @@
-import baseConfig from './env.json';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-export enum Environment {
-  LOCAL = 'local',
-  DEVELOPMENT = 'development',
-  PRODUCTION = 'production',
-  TEST = 'test',
-}
+/**
+ * This class enables any number of environment configs in `json` format.
+ * Reason being is that CRA only provides `development` and `production` environments.
+ * 
+ * Configuration files have to be inside the `src` folder since CRA limits imports outside of `src` folder.
+ * The only solution would be to eject from the CRA structure with `yarn eject`.
+ * 
+ * @example
+ * ```
+    // First step is building the config, usually in `App.tsx`.
+    EnvironmentConfig.buildConfig();
 
+    // Get the current config -> e.g. `{ appName: "@profico/react-boilerplate" }`
+    EnvironmentConfig.getConfig();
+
+    // Get the current environment
+    EnvironmentConfig.getEnvironment();
+
+    // Get a value by key or `undefined` if the key is not found
+    EnvironmentConfig.getValue('appName');
+
+    // Support for nested keys -> e.g. `{ app: { name: "@profico/react-boilerplate" } }`
+    EnvironmentConfig.getValue('app.name');
+ * ```
+ */
 export class EnvironmentConfig {
-  private static environment: Environment;
+  private static environment: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static config: Record<string, any>;
 
   public static buildConfig() {
@@ -18,9 +35,29 @@ export class EnvironmentConfig {
       return this.config;
     }
 
-    const environment = process.env.REACT_APP_ENVIRONMENT as Environment;
-    const appConfigEnvironmentFileName = this.getAppConfigFileName(environment);
-    const environmentConfig = require(`./${appConfigEnvironmentFileName}`);
+    const environment = process.env.REACT_APP_ENVIRONMENT;
+
+    if (!environment) {
+      throw new Error('Undefined environment!');
+    }
+
+    const appConfigEnvironmentFileName = `env.${environment}.json`;
+    const baseConfigFileName = 'env.json';
+
+    let baseConfig: Record<string, any>;
+    let environmentConfig: Record<string, any>;
+
+    try {
+      baseConfig = require(`../../${baseConfigFileName}`);
+    } catch {
+      baseConfig = {};
+    }
+
+    try {
+      environmentConfig = require(`../../${appConfigEnvironmentFileName}`);
+    } catch {
+      environmentConfig = {};
+    }
 
     this.environment = environment;
     this.config = {
@@ -28,28 +65,18 @@ export class EnvironmentConfig {
       ...environmentConfig,
     };
 
-    Object.keys(this.config).forEach(key => {
-      Object.defineProperty(this, key, {
-        value: environmentConfig[key] ?? baseConfig[key as keyof typeof baseConfig],
-      });
-    });
-
     return this.config;
   }
 
-  private static getAppConfigFileName(environment: Environment): string {
-    if (Object.values(Environment).includes(environment)) {
-      return `env.${environment}.json`;
+  public static getEnvironment<T extends string = string>(): T {
+    return this.environment as T;
+  }
+
+  public static getConfig<T = Record<string, any>>(): T {
+    if (!this.config) {
+      return {} as T;
     }
 
-    throw new Error('Undefined Environment!');
-  }
-
-  public static getEnvironment(): Environment {
-    return this.environment;
-  }
-
-  public static getConfig<T = Record<string, unknown>>(): T {
     return this.config as T;
   }
 

@@ -1,3 +1,3 @@
-import { Environment, EnvironmentConfig } from './environment.config';
+import { EnvironmentConfig } from './environment.config';
 
-export { Environment, EnvironmentConfig };
+export { EnvironmentConfig };
