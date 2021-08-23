@@ -1,100 +1,62 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+interface Config {
+  APP_ENV: string | undefined;
+  NODE_ENV: string;
+  settings: Record<string, any>;
+}
+
 /**
- * This class enables any number of environment configs in `json` format.
- * Reason being is that CRA only provides `development` and `production` environments.
- * 
- * Configuration files have to be inside the `src` folder since CRA limits imports outside of `src` folder.
- * The only solution would be to eject from the CRA structure with `yarn eject`.
+ * This class is a helper class for easier handling of environment variables.
  * 
  * @example
  * ```
-    // First step is building the config, usually in `App.tsx`.
-    EnvironmentConfig.buildConfig();
-
     // Get the current config -> e.g. `{ appName: "@profico/react-boilerplate" }`
     EnvironmentConfig.getConfig();
 
     // Get the current environment
     EnvironmentConfig.getEnvironment();
-
-    // Get a value by key or `undefined` if the key is not found
-    EnvironmentConfig.getValue('appName');
-
-    // Support for nested keys -> e.g. `{ app: { name: "@profico/react-boilerplate" } }`
-    EnvironmentConfig.getValue('app.name');
  * ```
  */
 export class EnvironmentConfig {
-  private static environment: string;
+  private static config: Config;
 
-  private static config: Record<string, any>;
+  private static buildConfig() {
+    const APP_ENV = process.env.REACT_APP_ENV;
+    // eslint-disable-next-line prefer-destructuring
+    const NODE_ENV = process.env.NODE_ENV;
+    const settings: Record<string, any> = {};
 
-  public static buildConfig() {
-    if (this.config) {
-      return this.config;
-    }
+    Object.keys(process.env).forEach(key => {
+      if (key === 'REACT_APP_ENV') {
+        settings.APP_ENV = process.env[key];
+      } else if (key.includes('REACT_APP_')) {
+        settings[key.replace('REACT_APP_', '')] = process.env[key];
+      } else {
+        settings[key] = process.env[key];
+      }
+    });
 
-    const environment = process.env.REACT_APP_ENVIRONMENT;
-
-    if (!environment) {
-      throw new Error('Undefined environment!');
-    }
-
-    const appConfigEnvironmentFileName = `env.${environment}.json`;
-    const baseConfigFileName = 'env.json';
-
-    let baseConfig: Record<string, any>;
-    let environmentConfig: Record<string, any>;
-
-    try {
-      baseConfig = require(`../../${baseConfigFileName}`);
-    } catch {
-      baseConfig = {};
-    }
-
-    try {
-      environmentConfig = require(`../../${appConfigEnvironmentFileName}`);
-    } catch {
-      environmentConfig = {};
-    }
-
-    this.environment = environment;
     this.config = {
-      ...baseConfig,
-      ...environmentConfig,
+      NODE_ENV,
+      settings,
+      APP_ENV: APP_ENV || NODE_ENV,
     };
 
     return this.config;
   }
 
-  public static getEnvironment<T extends string = string>(): T {
-    return this.environment as T;
+  public static getConfig() {
+    const config = this.config || this.buildConfig();
+
+    return config;
   }
 
-  public static getConfig<T = Record<string, any>>(): T {
-    if (!this.config) {
-      return {} as T;
-    }
-
-    return this.config as T;
+  public static getAppEnvironment() {
+    return this.getConfig().APP_ENV;
   }
 
-  public static getValue<T>(key: string): T | undefined {
-    try {
-      const keys = key.split('.');
-      const { config } = this;
-      let result = config[keys[0] as keyof typeof config];
-
-      for (let index = 1; index < keys.length; index += 1) {
-        const propertyName = keys[index];
-
-        result = result[propertyName];
-      }
-
-      return result as T;
-    } catch {
-      return undefined;
-    }
+  public static getNodeEnvironment() {
+    return this.getConfig().NODE_ENV;
   }
 }

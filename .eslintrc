@@ -35,6 +35,11 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
+  "globals": {
+    "NodeJS": "readonly",
+    "React": "readonly",
+    "JSX": "readonly"
+  },
   "rules": {
     "@typescript-eslint/interface-name-prefix": 0,
     "react/prop-types": 0,
