@@ -1,8 +1,6 @@
 import React from 'react';
-import Home from 'views/Home';
-import { ConfigurationBuilder } from 'config';
 
-ConfigurationBuilder.buildConfiguration();
+import Home from '../../views/Home';
 
 const App: React.FC = () => (
   <div>

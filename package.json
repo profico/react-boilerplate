@@ -1,5 +1,5 @@
 {
-  "name": "@profico/react-boilerplate-typescript",
+  "name": "@profico/react-boilerplate",
   "version": "1.0.0",
   "private": true,
   "author": {
@@ -13,11 +13,10 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "start": "react-scripts start",
-    "start:local": "REACT_APP_ENVIRONMENT=local yarn start",
-    "build": "react-scripts build",
-    "test": "REACT_APP_ENVIRONMENT=test react-scripts test",
-    "test:cov": "yarn test -- --coverage",
+    "start": "node scripts/run.js --cmd=start",
+    "build": "node scripts/run.js --cmd=build",
+    "test": "react-scripts test",
+    "test:cov": "yarn test --coverage",
     "test:ci": "CI=true yarn test",
     "lint:base": "eslint --ext .ts,.tsx src/",
     "lint": "pretty-quick --staged && yarn lint:base --fix --cache --cache-location=./node_modules/.cache/",

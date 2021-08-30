@@ -35,6 +35,11 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
+  "globals": {
+    "NodeJS": "readonly",
+    "React": "readonly",
+    "JSX": "readonly"
+  },
   "rules": {
     "@typescript-eslint/interface-name-prefix": 0,
     "react/prop-types": 0,
@@ -87,6 +92,7 @@
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error"]
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "class-methods-use-this": "off"
   }
 }
