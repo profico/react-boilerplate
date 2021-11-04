@@ -1,7 +1,12 @@
 # Style Guide
 
-As a "base" style guide, we'll be using the Airbnb's style guide ([website](https://airbnb.io/javascript/react) or [GitHub](https://github.com/airbnb/javascript)). Since we're applying different eslint configs that are combined with Airbnb's [config](https://yarnpkg.com/package/eslint-config-airbnb), large number of these rules are already enforced.
+We'll be using multiple Airbnb's style guides as "base" guides:
 
+- [JavaScript](https://github.com/airbnb/javascript)
+- [React](https://github.com/airbnb/javascript/tree/master/react)
+- [CSS & Sass](https://github.com/airbnb/css)
+
+Since we're applying different eslint configs that are combined with Airbnb's [config](https://yarnpkg.com/package/eslint-config-airbnb), large number of these rules are already enforced.
 Additional rules that can be applied to have an universal style of coding across apps:
 
 <br />

@@ -93,6 +93,7 @@
     "@typescript-eslint/no-shadow": ["error"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["warn"],
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "newline-before-return": "error"
   }
 }
