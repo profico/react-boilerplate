@@ -33,7 +33,7 @@ Additional rules that can be applied to have an universal style of coding across
 
   > Prefer default imports when available. E.g. `import isEmpty from 'lodash/isEmpty` instead of `import { isEmpty } from 'lodash'`. Results in a smaller bundle size (depending on your bundler).
 
-  > Ordering will have to be done manually until we have our own eslint plugin that will take care of this.
+  > Install `@profi.co/eslint-plugin` to fix import errors automatically.
 
 - Full example WITHOUT path aliasing:
 

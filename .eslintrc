@@ -12,7 +12,8 @@
     "prettier",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:@profi.co/recommended"
   ],
   "plugins": ["react-hooks", "prettier"],
   "settings": {
@@ -41,33 +42,23 @@
     "JSX": "readonly"
   },
   "rules": {
-    "@typescript-eslint/interface-name-prefix": 0,
-    "react/prop-types": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "react/jsx-props-no-spreading": 0,
-    "import/prefer-default-export": 0,
-    "import/named": 2,
-    "import/namespace": 2,
+    "@typescript-eslint/ban-ts-comment": ["off"],
+    "@typescript-eslint/ban-ts-ignore": ["off"],
+    "@typescript-eslint/camelcase": ["off"],
+    "@typescript-eslint/explicit-function-return-type": ["warn"],
+    "@typescript-eslint/explicit-module-boundary-types": ["off"],
+    "@typescript-eslint/interface-name-prefix": ["off"],
+    "@typescript-eslint/no-empty-function": ["off"],
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-var-requires": ["off"],
+    "camelcase": ["off"],
+    "class-methods-use-this": ["off"],
+    "curly": ["error"],
+    "global-require": ["off"],
     "import/default": 2,
     "import/export": 2,
-    "react/state-in-constructor": 0,
-    "react/static-property-placement": 0,
-    "camelcase": 0,
-    "@typescript-eslint/camelcase": 0,
-    "@typescript-eslint/ban-ts-ignore": 0,
-    "@typescript-eslint/ban-ts-comment": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "jsx-a11y/mouse-events-have-key-events": 0,
-    "react/jsx-curly-newline": 0,
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        "required": {
-          "some": ["nesting", "id"]
-        }
-      }
-    ],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -78,22 +69,62 @@
         "tsx": "never"
       }
     ],
-    "@typescript-eslint/no-empty-function": 0,
-    "react/sort-comp": 0,
-    "react/jsx-wrap-multilines": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "import/no-dynamic-require": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "global-require": "off",
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/no-cycle": [2, { "maxDepth": 1 }],
+    "import/no-dynamic-require": ["off"],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.tsx", "src/setupTests.ts"] }],
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["warn"],
-    "class-methods-use-this": "off",
-    "newline-before-return": "error"
+    "import/prefer-default-export": ["off"],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/mouse-events-have-key-events": ["off"],
+    "newline-before-return": "error",
+    "no-shadow": ["off"],
+    "no-unused-vars": ["off"],
+    "no-use-before-define": ["off"],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": ["const", "let", "var"],
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["const", "let", "var"]
+      },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["if", "while", "for"]
+      },
+      {
+        "blankLine": "always",
+        "prev": ["if", "while", "for"],
+        "next": "*"
+      }
+    ],
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-curly-newline": ["off"],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-props-no-spreading": ["off"],
+    "react/jsx-wrap-multilines": ["off"],
+    "react/prop-types": ["off"],
+    "react/sort-comp": ["off"],
+    "react/state-in-constructor": ["off"],
+    "react/static-property-placement": ["off"]
   }
 }

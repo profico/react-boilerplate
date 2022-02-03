@@ -29,7 +29,6 @@ src
 
 ## Available Scripts
 
-
 ### `yarn start`
 
 Runs the app in the development mode.<br />
@@ -65,7 +64,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 - [axios](https://github.com/axios/axios) for handling API calls
 - [core-js](https://github.com/zloirock/core-js) & [react-app-polyfill](https://github.com/facebook/create-react-app/tree/master/packages/react-app-polyfill) for older browser support
-- [node-sass](https://github.com/sass/node-sass) for SASS support ([classnames](https://github.com/JedWatson/classnames) is also recommended)
+- [sass](https://github.com/sass/sass) for SASS support ([clsx](https://github.com/lukeed/clsx) is also recommended)
 
   - create `typings.d.ts` file in the root dir and add the following content:
 
@@ -78,11 +77,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     ```
 
 - [Material-UI](https://github.com/mui-org/material-ui) for UI components
-- [moment](https://github.com/moment/moment) for handling dates
+- ~~[moment](https://github.com/moment/moment) for handling dates~~ DEPRECATED
+- [dayjs](https://github.com/iamkun/dayjs) for handling dates (almost same API as moment)
 - [notistack](https://github.com/iamhosseindhv/notistack) for handling snackbar messages ([Material-UI](https://github.com/mui-org/material-ui) is a requirement)
 - [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) for navigation
 - [react-use](https://github.com/streamich/react-use) - provides a lot of useful hooks
-- [redux](https://github.com/reduxjs/redux) + [reselect](https://github.com/reduxjs/reselect)
+- [redux](https://github.com/reduxjs/redux) + [reselect](https://github.com/reduxjs/reselect) for global state management
   - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) & [redux-logger](https://github.com/LogRocket/redux-logger) for easier development
 - [react-apollo](https://github.com/apollographql/react-apollo) for GraphQL integration
 - [styled-components](https://github.com/styled-components/styled-components) for styled components

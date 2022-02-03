@@ -1,13 +1,14 @@
 class ScriptUtils {
-  static loadAsync = (src: string, callback?: () => void) => {
+  static loadAsync = (src: string, callback?: () => void): void => {
     const script = document.createElement('script');
+
     script.src = src;
 
     if (callback) {
       // @ts-ignore
       if (script.readyState) {
         // @ts-ignore
-        script.onreadystatechange = () => {
+        script.onreadystatechange = (): void => {
           // @ts-ignore
           if (script.readyState === 'loaded' || script.readyState === 'complete') {
             // @ts-ignore
@@ -16,7 +17,7 @@ class ScriptUtils {
           }
         };
       } else {
-        script.onload = () => {
+        script.onload = (): void => {
           callback();
         };
       }
@@ -25,7 +26,7 @@ class ScriptUtils {
     document.head.appendChild(script);
   };
 
-  static exists = (src: string) => Boolean(document.querySelector(`script[src="${src}"]`));
+  static exists = (src: string): boolean => Boolean(document.querySelector(`script[src="${src}"]`));
 }
 
 export default ScriptUtils;

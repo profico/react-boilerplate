@@ -21,7 +21,7 @@ interface Config {
 export class EnvironmentConfig {
   private static config: Config;
 
-  private static buildConfig() {
+  private static buildConfig(): Config {
     const APP_ENV = process.env.REACT_APP_ENV;
     // eslint-disable-next-line prefer-destructuring
     const NODE_ENV = process.env.NODE_ENV;
@@ -46,17 +46,17 @@ export class EnvironmentConfig {
     return this.config;
   }
 
-  public static getConfig() {
+  public static getConfig(): Config {
     const config = this.config || this.buildConfig();
 
     return config;
   }
 
-  public static getAppEnvironment() {
+  public static getAppEnvironment(): string | undefined {
     return this.getConfig().APP_ENV;
   }
 
-  public static getNodeEnvironment() {
+  public static getNodeEnvironment(): string | undefined {
     return this.getConfig().NODE_ENV;
   }
 }
