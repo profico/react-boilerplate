@@ -75,7 +75,7 @@ Additional rules that can be applied to have an universal style of coding across
 
 <br />
 
-## Project structure
+# Project structure
 
 ### _src/components_
 
@@ -145,11 +145,11 @@ Additional rules that can be applied to have an universal style of coding across
 
 <br />
 
-## Component structure
+# Component structure
 
 ### _Functional component (arrow function)_
 
-```typescript
+```tsx
 import React from 'react';
 
 interface MyComponentProps {}
@@ -162,7 +162,7 @@ export default MyComponent;
 
 ### _Functional component (regular function)_
 
-```typescript
+```tsx
 import React from 'react';
 
 interface MyComponentProps {}
@@ -175,7 +175,7 @@ export default MyComponent;
 
 ### _Functional component with generic props_
 
-```typescript
+```tsx
 import React from 'react';
 
 interface MyComponentProps<T> extends T {}
@@ -186,9 +186,56 @@ function MyComponent<T>(props: MyComponentProps<T>) {}
 export default MyComponent;
 ```
 
+### _Context_
+
+```tsx
+import React from 'react';
+
+import { User } from './some-typings';
+
+interface CurrentUserContextValues {
+  user: User | undefined;
+}
+
+export const CurrentUserContext = React.createContext<CurrentUserContextValues>({ user: undefined });
+export const useCurrentUserContext = (): CurrentUserContextValues => React.useContext(MyContext);
+```
+
+### _Context (with wrapper)_
+
+```tsx
+import React from 'react';
+
+import { User } from './some-typings';
+
+interface CurrentUserContextValues {
+  user: User | undefined;
+}
+
+interface CurrentUserProviderProps {
+  id: string;
+}
+
+const CurrentUserContext = React.createContext<CurrentUserContextValues>({ user: undefined });
+// or useCurrentUserCtx -- if the name of the hook clashes with another hook
+export const useCurrentUser = (): CurrentUserContextValues => React.useContext(CurrentUserContext);
+
+const CurrentUserProvider: React.FC<CurrentUserProviderProps> = ({ children, id }) => {
+  const [user, setUser] = useState<User>();
+
+  React.useEffect(() => {
+    UsersService.findById(id).then(setUser);
+  }, [id]);
+
+  return <MyContext.Provider value={{ user }}>{children}</MyContext.Provider>;
+};
+
+export default CurrentUserProvider;
+```
+
 ### _Regular Hook (arrow function)_
 
-```typescript
+```tsx
 import React from 'react';
 
 type UseSomethingHook = () => void;
@@ -200,7 +247,7 @@ export default useSomething;
 
 ### _Regular Hook (regular function)_
 
-```typescript
+```tsx
 import React from 'react';
 
 function useSomething(): void;
@@ -212,7 +259,7 @@ export default useSomething;
 
 ### _Regular Hook (with options and return type)_
 
-```typescript
+```tsx
 import React from 'react';
 
 interface UseSomethingOptions {}
@@ -227,7 +274,7 @@ export default useSomething;
 
 ### _Regular Hook (with generic options)_
 
-```typescript
+```tsx
 import React from 'react';
 
 interface UseSomethingOptions<C> extends C {}
@@ -242,7 +289,7 @@ export default useSomething;
 
 ### _Regular Hook (with generic options and payload)_
 
-```typescript
+```tsx
 import React from 'react';
 
 interface UseSomethingOptions<C> extends C {}
@@ -257,7 +304,7 @@ export default useSomething;
 
 <br />
 
-## Other
+# Other
 
 ---
 
