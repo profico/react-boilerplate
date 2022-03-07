@@ -198,7 +198,7 @@ interface CurrentUserContextValues {
 }
 
 export const CurrentUserContext = React.createContext<CurrentUserContextValues>({ user: undefined });
-export const useCurrentUserContext = (): CurrentUserContextValues => React.useContext(MyContext);
+export const useCurrentUserContext = (): CurrentUserContextValues => React.useContext(CurrentUserContext);
 ```
 
 ### _Context (with wrapper)_
