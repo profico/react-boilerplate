@@ -314,7 +314,7 @@ export default useSomething;
 - Prefer functional over class components
 - Avoid one-line returns
 - Avoid unnecessary exports
-- If you need to define multiple helper functions that are scoped for a certain component, create a new file
+- If you need to define multiple helper functions/interfaces/constants (let's call them `"helpers"`) that are scoped for a certain component, create a new file
   inside the component directory called `<ComponentName>.helpers.ts` (or `<ComponentName>.helpers.tsx` if you need to render elements) and export
-  the functions from there. That way we'll also enable subcomponents to use those helper functions without having to deal with circular dependency.
+  the helpers from there. That way we'll also enable subcomponents to use those helpers without having to deal with circular dependency.
 - _Add your recommendation here_...
