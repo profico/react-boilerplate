@@ -316,5 +316,25 @@ export default useSomething;
 - Avoid unnecessary exports
 - If you need to define multiple helper functions/interfaces/constants (let's call them `"helpers"`) that are scoped for a certain component, create a new file
   inside the component directory called `<ComponentName>.helpers.ts` (or `<ComponentName>.helpers.tsx` if you need to render elements) and export
-  the helpers from there. That way we'll also enable subcomponents to use those helpers without having to deal with circular dependency.
+  the helpers from there. That way we'll also enable subcomponents to use those helpers without having to deal with circular dependency
+- When using CSS (or SCSS) modules, root element in the component body should have a class called `.container`. Optionally, it can be wrapped with `.root` class for increased selector specificity. This also allows for an easier overview when inspecting elements since the class name is constructed from the file name + class name + hash.
+
+  ```tsx
+  import React from 'react';
+
+  import styles from './my_component.module.scss';
+
+  const MyComponent: React.FC = () => (
+    <div className={styles.container}>
+      <button className={styles.button}>Click me</button>
+    </div>
+  );
+
+  // When inspecting element
+
+  <div class="my_component_container__h87f3">
+    <button class="my_component_button__390f2f">Click me</button>
+  </div>;
+  ```
+
 - _Add your recommendation here_...
