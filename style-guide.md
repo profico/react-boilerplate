@@ -337,4 +337,11 @@ export default useSomething;
   </div>;
   ```
 
+- When defining colors, we should follow the Material Color System naming convention.
+  Alternative colors (colors that are not defined as primary, secondary, error, success, etc.) should be named in the following way:
+
+  `[color]-[weight]` -> where the color represents the color name (red, green, purple, etc.) and and weight represents a number between 100 and 900 (with a step of 100; or in case there are really similar colors, a step of 50), with 100 being the lightest variant and 900 being the darkest variant.
+
+  > https://material.io/design/color/the-color-system.html
+
 - _Add your recommendation here_...
