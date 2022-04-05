@@ -344,4 +344,6 @@ export default useSomething;
 
   > https://material.io/design/color/the-color-system.html
 
+- Required props should be listed before optional ones
+
 - _Add your recommendation here_...
