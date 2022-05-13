@@ -211,12 +211,32 @@ import { User } from './some-typings';
 interface CurrentUserContextValues {
   user: User | undefined;
 }
+// Or if we need to save both state and some actions in the context
+interface CurrentUserContextValues {
+  state: {
+    user: User | undefined;
+  };
+  actions: {
+    setUser(user: User): void;
+    resetUser(): Promise<void>;
+  };
+}
 
 interface CurrentUserProviderProps {
   id: string;
 }
 
 const CurrentUserContext = React.createContext<CurrentUserContextValues>({ user: undefined });
+// or
+const CurrentUserContext = React.createContext<CurrentUserContextValues>({
+  state: {
+    user: undefined,
+  },
+  actions: {
+    setUser() {},
+    async resetUser() {},
+  },
+});
 // or useCurrentUserCtx -- if the name of the hook clashes with another hook
 export const useCurrentUser = (): CurrentUserContextValues => React.useContext(CurrentUserContext);
 
@@ -331,7 +351,6 @@ export default useSomething;
   );
 
   // When inspecting element
-
   <div class="my_component_container__h87f3">
     <button class="my_component_button__390f2f">Click me</button>
   </div>;
