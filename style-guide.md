@@ -365,4 +365,105 @@ export default useSomething;
 
 - Required props should be listed before optional ones
 
+- Events should start with the `on` prefix; event handlers should start with the `handle` prefix unless the name of the function clearly indicates what it does. Examples:
+
+  ```tsx
+  import React from 'react';
+
+  interface ComponentProps {
+    // Event
+    onClick(id: string): void;
+  }
+
+  const Component: React.FC<ComponentProps> = ({ onClick }) => {
+    // Event handler
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      const {
+        currentTarget: { id },
+      } = e;
+
+      onClick(id);
+    };
+
+    return (
+      <button onClick={handleClick} id="some-id">
+        Click me
+      </button>
+    );
+  };
+  ```
+
+  ```tsx
+  import React from 'react';
+
+  interface ModalProps {
+    // Event
+    onClose(): void;
+  }
+
+  const Modal: React.FC<ModalProps> = ({ onClose }) => {
+    // Event handler
+    const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+      // do some side effects
+      onClose();
+    };
+
+    return (
+      <div>
+        <div>
+          <h3>Modal title</h3>
+          {/* If we don't need to to any side effects we can pass in `onClose` directly to `onClick` */}
+          <button onClick={handleClose}>X</button>
+        </div>
+        <div>Modal content</div>
+      </div>
+    );
+  };
+  ```
+
+  ```tsx
+  import React from 'react';
+
+  const Counter: React.FC<CounterProps> = () => {
+    const [count, setCount] = useState<number>(0);
+
+    const decrementCount = () => {
+      setCount(prev => prev - 1);
+    };
+
+    const incrementCount = () => {
+      setCount(prev => prev - 1);
+    };
+
+    // Or if we want to have a single handler for decrementing/incrementing
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      const {
+        currentTarget: { value },
+      } = e;
+
+      setCount(prev => (action === 'decrement' ? prev - 1 : prev + 1));
+    };
+
+    return (
+      <div>
+        <button
+          onClick={decrementCount}
+          // onClick={handleClick}
+          // value="decrement"
+        >
+          -
+        </button>
+        <div>{count}</div>
+        <button
+          onClick={incrementCount}
+          // onClick={handleClick}
+          // value="increment"
+        >
+          +
+        </button>
+      </div>
+    );
+  };
+  ```
+
 - _Add your recommendation here_...
