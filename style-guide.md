@@ -365,7 +365,13 @@ export default useSomething;
 
 - Required props should be listed before optional ones
 
-- Events should start with the `on` prefix; event handlers should start with the `handle` prefix unless the name of the function clearly indicates what it does. Examples:
+- Events should start with the `on` prefix; event handlers should start with the `handle` prefix unless the name of the function clearly indicates what it does. Make sure the names of the handlers are easy to read and that the word flow is natural. General naming structure can be described like this:
+
+  > **Events**: `on<subject?><action>` where `subject` is optional because sometimes it can be implied what the event refers to. E.g. `onClick` and `onArrowClick`.
+
+  > **Event handlers**: `handle<subject?><action>` where `subject` is optional because sometimes it can be implied what the handler refers to. E.g. `handleClick` and `handleTableRowClick`.
+
+  Examples:
 
   ```tsx
   import React from 'react';
