@@ -1505,10 +1505,10 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@profi.co/eslint-plugin@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@profi.co/eslint-plugin/-/eslint-plugin-1.0.5.tgz#ab4b476d77906a24ae5879c320ca69619a78e97b"
-  integrity sha512-aaAYwlMhlYAgnQtXVIuMiUj9ceZeP/mcQQsZwd6T9HMZJt8rQ9qg+ne10L66eql8aomUje2xsy7lCX1kp1hF4w==
+"@profi.co/eslint-plugin@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@profi.co/eslint-plugin/-/eslint-plugin-1.0.7.tgz#0113b51b5de9691f9847e267c97045484e02d61a"
+  integrity sha512-myb49D8LPKhoZdxCU19Q3d1wl9y9pEePHkbJEnX44yW5Sc2nkWAI2oBM/f+aJWdOHQopRUVuWyALVSI8jKMdtQ==
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
