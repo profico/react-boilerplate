@@ -118,6 +118,7 @@
     ],
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
+    "react/function-component-definition": ["off"],
     "react/jsx-curly-newline": ["off"],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "react/jsx-props-no-spreading": ["off"],
