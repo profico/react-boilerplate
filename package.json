@@ -19,7 +19,7 @@
     "test:cov": "yarn test --coverage",
     "test:ci": "CI=true yarn test",
     "lint:base": "eslint --ext .ts,.tsx src/",
-    "lint": "pretty-quick --staged && yarn lint:base --fix --cache --cache-location=./node_modules/.cache/",
+    "lint": "pretty-quick && yarn lint:base --fix --cache --cache-location=./node_modules/.cache/",
     "upgrade": "yarn upgrade"
   },
   "eslintConfig": {
