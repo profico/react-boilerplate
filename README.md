@@ -1,3 +1,5 @@
+> :warning: **ARCHIVED**: This repository has been archived in favour of [React Boilerplate Vite](https://github.com/profico/react-boilerplate-vite).
+
 ## Project structure
 
 This project uses import alias which means every import is relative to the root folder.
